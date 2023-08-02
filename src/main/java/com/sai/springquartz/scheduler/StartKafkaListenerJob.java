@@ -1,6 +1,6 @@
-package org.baeldung.springquartz.basics.scheduler;
+package com.sai.springquartz.scheduler;
 
-import org.baeldung.springquartz.basics.service.SampleJobService;
+import com.sai.springquartz.service.KafkaStartStopService;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -10,19 +10,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SampleJobNew implements Job {
+public class StartKafkaListenerJob implements Job {
 
     Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    private SampleJobService jobService;
+    private KafkaStartStopService jobService;
 
     public void execute(JobExecutionContext context) throws JobExecutionException {
 
         logger.info("Job ** {} ** fired @ {}", context.getJobDetail().getKey().getName(), context.getFireTime());
 
-        jobService.executeSampleJob();
+        jobService.startJob();
 
-        logger.info("New Next job scheduled @ {}", context.getNextFireTime());
+        logger.info("Next start job scheduled @ {}", context.getNextFireTime());
     }
 }

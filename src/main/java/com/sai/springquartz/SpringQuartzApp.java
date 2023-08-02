@@ -1,4 +1,4 @@
-package org.baeldung.springquartz;
+package com.sai.springquartz;
 
 import org.springframework.boot.Banner.Mode;
 import org.springframework.boot.builder.SpringApplicationBuilder;
